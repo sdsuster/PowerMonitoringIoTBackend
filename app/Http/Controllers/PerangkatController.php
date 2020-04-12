@@ -62,9 +62,9 @@ class PerangkatController extends Controller
     {
         //
         if ($request->id_lantai == null) {
-            return response(DB::select('SELECT P.id, P.nama, U.name AS created_by, UU.name AS last_updated_by, hash_id, hash_pass,P.created_at, P.updated_at FROM perangkat P JOIN users U ON P.created_by = U.id JOIN users UU ON P.last_updated_by '));
+            return response(DB::select('SELECT P.id, P.nama, U.name AS created_by, UU.name AS last_updated_by, hash_id, hash_pass,P.created_at, P.updated_at FROM perangkat P JOIN users U ON P.created_by = U.id JOIN users UU ON P.last_updated_by = UU.id '));
         }
-        return response(DB::select('SELECT P.id, P.nama, U.name AS created_by, UU.name AS last_updated_by, hash_id, hash_pass, P.created_at, P.updated_at FROM perangkat P JOIN users U ON P.created_by = U.id JOIN users UU ON P.last_updated_by WHERE id_lantai = ' . $request->id_lantai));
+        return response(DB::select('SELECT P.id, P.nama, U.name AS created_by, UU.name AS last_updated_by, hash_id, hash_pass, P.created_at, P.updated_at FROM perangkat P JOIN users U ON P.created_by = U.id JOIN users UU ON P.last_updated_by = UU.id WHERE id_lantai = ' . $request->id_lantai));
     }
 
     /**

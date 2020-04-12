@@ -38,9 +38,9 @@ class LantaiController extends Controller
     {
         //
         if ($request->id_gedung == null) {
-            return response(DB::select('SELECT L.id, L.nama, U.name AS created_by, UU.name AS last_updated_by, L.created_at, L.updated_at FROM lantai L JOIN users U ON L.created_by = U.id JOIN users UU ON L.last_updated_by = U.id'));
+            return response(DB::select('SELECT L.id, L.nama, U.name AS created_by, UU.name AS last_updated_by, L.created_at, L.updated_at FROM lantai L JOIN users U ON L.created_by = U.id JOIN users UU ON L.last_updated_by = UU.id'));
         }
-        return response(DB::select('SELECT L.id, L.nama, U.name AS created_by, UU.name AS last_updated_by, L.created_at, L.updated_at FROM lantai L JOIN users U ON L.created_by = U.id JOIN users UU ON L.last_updated_by  = U.id WHERE id_gedung = ' . $request->id_gedung));
+        return response(DB::select('SELECT L.id, L.nama, U.name AS created_by, UU.name AS last_updated_by, L.created_at, L.updated_at FROM lantai L JOIN users U ON L.created_by = U.id JOIN users UU ON L.last_updated_by  = UU.id WHERE id_gedung = ' . $request->id_gedung));
     }
 
     /**

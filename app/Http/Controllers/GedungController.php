@@ -41,9 +41,9 @@ class GedungController extends Controller
     {
         //
         if ($request->id_kampus == null) {
-            return response(DB::select('SELECT G.id, G.nama, U.name AS created_by, UU.name AS last_updated_by, G.created_at, G.updated_at FROM gedung G JOIN users U ON G.created_by = U.id JOIN users UU ON G.last_updated_by '));
+            return response(DB::select('SELECT G.id, G.nama, U.name AS created_by, UU.name AS last_updated_by, G.created_at, G.updated_at FROM gedung G JOIN users U ON G.created_by = U.id JOIN users UU ON G.last_updated_by = UU.id'));
         }
-        return response(DB::select('SELECT G.id, G.nama, U.name AS created_by, UU.name AS last_updated_by, G.created_at, G.updated_at FROM gedung G JOIN users U ON G.created_by = U.id JOIN users UU ON G.last_updated_by WHERE id_kampus = ' . $request->id_kampus));
+        return response(DB::select('SELECT G.id, G.nama, U.name AS created_by, UU.name AS last_updated_by, G.created_at, G.updated_at FROM gedung G JOIN users U ON G.created_by = U.id JOIN users UU ON G.last_updated_by = UU.id WHERE id_kampus = ' . $request->id_kampus));
     }
 
     /**

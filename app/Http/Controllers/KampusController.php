@@ -25,7 +25,7 @@ class KampusController extends Controller
     public function index()
     {
         //
-        return response(DB::select('SELECT K.id, K.nama, K.alamat, U.name AS created_by, UU.name AS last_updated_by, K.created_at, K.updated_at FROM kampus K JOIN users U ON K.created_by = U.id JOIN users UU ON K.last_updated_by '));
+        return response(DB::select('SELECT K.id, K.nama, K.alamat, U.name AS created_by, UU.name AS last_updated_by, K.created_at, K.updated_at FROM kampus K JOIN users U ON K.created_by = U.id JOIN users UU ON K.last_updated_by = UU.id '));
     }
 
     /**
