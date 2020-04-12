@@ -10,7 +10,7 @@ use stdClass;
 class RingkasanPerangkat extends Model
 {
     //
-    protected $table = 'RingkasanPerangkat';
+    protected $table = 'ringkasanperangkat';
     protected $fillable = ['jam', 'id_perangkat', 'n', 'rerata', 'rerata_r', 'rerata_s', 'rerata_t'];
     public $timestamps = false;
     function __construct(array $attributes = array())
@@ -23,7 +23,7 @@ class RingkasanPerangkat extends Model
     {
         $data = parent::where([['jam', '=', $waktu], ['id_perangkat', '=',  $idPerangkat]])->first();
         if ($data == null) {
-            $res = DB::select('SELECT MAX(jam) AS jam FROM ringkasanPerangkat WHERE id_Perangkat =' . $idPerangkat . ' GROUP BY id_perangkat');
+            $res = DB::select('SELECT MAX(jam) AS jam FROM ringkasanperangkat WHERE id_Perangkat =' . $idPerangkat . ' GROUP BY id_perangkat');
             $latest = new stdClass();
             if(count($res) == 0){
                 $latest->jam = 0;
